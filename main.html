@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orintação a Objetos com JS</title>
+</head>
+<body>
+
+    <h1>Verificar Console!!!</h1>
+  <script>
+    // Classe abstrata (classe pai)
+    class Animal {
+      constructor(nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
+      }
+
+      makeSound() {
+        throw new Error("O método 'makeSound()' deve ser implementado nas classes filhas.");
+      }
+
+      showInfo() {
+        console.log(`Nome: ${this.nome}, Idade: ${this.idade} anos`);
+      }
+    }
+
+    // Classe herança - cachorro
+    class Dog extends Animal {
+      constructor(nome, idade, raca) {
+        super(nome, idade);
+        this.raca = raca;
+      }
+
+      makeSound() {
+        console.log("Au au!");
+      }
+
+      showInfo() {
+        super.showInfo();
+        console.log(`Raça: ${this.raca}`);
+      }
+    }
+
+    // Classe filha - gato
+    class Cat extends Animal {
+      constructor(nome, idade, cor) {
+        super(nome, idade);
+        this.cor = cor;
+      }
+
+      makeSound() {
+        console.log("Miau!");
+      }
+
+      showInfo() {
+        super.showInfo();
+        console.log(`Cor: ${this.cor}`);
+      }
+    }
+
+    // Instâncias dos objetos
+    const dog1 = new Dog("Marley", 3, "Labrador");
+    const cat1 = new Cat("Luna", 2, "Branco e preto");
+    const dog2 = new Dog("Bob", 5, "Golden Retriever");
+
+    // Exemplo de chamada dos métodos e exibição das informações
+    dog1.makeSound(); // Saída: "Au au!"
+    dog1.showInfo(); // Saída: "Nome: Max, Idade: 3 anos, Raça: Labrador"
+
+    cat1.makeSound(); // Saída: "Miau!"
+    cat1.showInfo(); // Saída: "Nome: Luna, Idade: 2 anos, Cor: Branco e preto"
+
+    dog2.makeSound(); // Saída: "Au au!"
+    dog2.showInfo(); // Saída: "Nome: Buddy, Idade: 5 anos, Raça: Golden Retriever"
+  </script>
+</body>
+</html>
